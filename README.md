@@ -1,6 +1,6 @@
 Project Title: **Automatic Generation of Academic Citation Graph**
 
-Also on: [WordPress][1]
+Also on: [WordPress][1], [Wolfram Community][6]
 
 Source Code and Data: [GitHub repository][2]
 
@@ -31,3 +31,4 @@ Enjoy.
 [3]: https://ui.adsabs.harvard.edu/
 [4]: https://raw.githubusercontent.com/lanstonchu/citation-graph/master/Mendeley.png
 [5]: https://raw.githubusercontent.com/lanstonchu/citation-graph/master/citation%20graph.jpg
+[6]: https://community.wolfram.com/groups/-/m/t/1770600?p_p_auth=yKGaKfN2
