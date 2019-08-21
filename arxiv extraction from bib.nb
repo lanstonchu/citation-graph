@@ -1,0 +1,401 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15984,        393]
+NotebookOptionsPosition[     14419,        360]
+NotebookOutlinePosition[     14761,        375]
+CellTagsIndexPosition[     14718,        372]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7752562070520706`*^9, 3.7752562639915633`*^9}},
+ CellLabel->
+  "In[396]:=",ExpressionUUID->"474f3145-d71b-4b2c-94b8-a51e6d726d3f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"captureArXiv", "[", "phase_", "]"}], ":=", "\[IndentingNewLine]", 
+    RowBox[{"(", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"posiStart", "=", 
+       RowBox[{
+        RowBox[{"Max", "[", 
+         RowBox[{"First", "/@", 
+          RowBox[{"StringPosition", "[", 
+           RowBox[{"phase", ",", 
+            RowBox[{"{", 
+             RowBox[{"\"\<:\>\"", ",", "\"\<{\>\""}], "}"}]}], "]"}]}], "]"}],
+         "+", "1"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"posiEndBr", "=", 
+       RowBox[{"Max", "[", 
+        RowBox[{"First", "/@", 
+         RowBox[{"StringPosition", "[", 
+          RowBox[{"phase", ",", 
+           RowBox[{"{", "\"\<}\>\"", "}"}]}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"posiEndV", "=", 
+       RowBox[{"Max", "[", 
+        RowBox[{"First", "/@", 
+         RowBox[{"StringPosition", "[", 
+          RowBox[{"phase", ",", 
+           RowBox[{"{", "\"\<v\>\"", "}"}]}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"posiEnd", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"posiEndV", "<=", 
+          RowBox[{"posiEndBr", "-", "4"}]}], ",", 
+         RowBox[{"posiEndBr", "-", "1"}], ",", 
+         RowBox[{"posiEndV", "-", "1"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"StringTake", "[", 
+       RowBox[{"phase", ",", 
+        RowBox[{"{", 
+         RowBox[{"posiStart", ",", "posiEnd"}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", ")"}]}], ";"}], "\[IndentingNewLine]"}]], "Input",
+ CellLabel->
+  "In[397]:=",ExpressionUUID->"e77a7509-4efa-420a-a6de-a768d454e9b4"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nbDir", "=", 
+   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"st", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"nbDir", ",", "\"\<My Collection.bib\>\""}], "]"}], ",", 
+     "\"\<Text\>\""}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.775245140270398*^9, 3.775245193615924*^9}, {
+   3.7752452452804117`*^9, 3.775245248167762*^9}, {3.775254918237301*^9, 
+   3.77525492429784*^9}, {3.775254999251021*^9, 3.7752550183921056`*^9}, 
+   3.7752564147034693`*^9, {3.775272260585744*^9, 3.775272296794033*^9}, {
+   3.775293496566194*^9, 3.7752935406899524`*^9}, 3.775295348793327*^9},
+ CellLabel->
+  "In[398]:=",ExpressionUUID->"0e3a35ef-6257-4f06-8888-dc68da39698a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"articlePosi001", "=", 
+   RowBox[{"First", "/@", 
+    RowBox[{"StringPosition", "[", 
+     RowBox[{"st", ",", "\"\<@article{\>\""}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"articlePosi002", "=", 
+   RowBox[{"First", "/@", 
+    RowBox[{"StringPosition", "[", 
+     RowBox[{"st", ",", "\"\<@techreport{\>\""}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"articlePosi", "=", 
+   RowBox[{"Sort", "@", 
+    RowBox[{"Union", "[", 
+     RowBox[{"articlePosi001", ",", "articlePosi002"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7753415216799717`*^9, 3.775341562473652*^9}, {
+  3.7753416497667294`*^9, 3.7753417433372393`*^9}},
+ CellLabel->
+  "In[400]:=",ExpressionUUID->"60f54230-01b8-431e-a2c0-bf66f3d8e74a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"stPosi", "=", 
+   RowBox[{"First", "/@", 
+    RowBox[{"StringPosition", "[", 
+     RowBox[{"st", ",", "\"\<arxivId = {\>\""}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pairs", "=", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"stPosi", "+", "0"}], ",", 
+      RowBox[{"stPosi", "+", "30"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"phases", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringTake", "[", 
+      RowBox[{"st", ",", "#"}], "]"}], "&"}], "/@", "pairs"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"arXivIDLists", "=", 
+  RowBox[{"captureArXiv", "/@", "phases"}]}]}], "Input",
+ CellChangeTimes->{{3.7752452865303297`*^9, 3.775245309892965*^9}, {
+   3.775245434839591*^9, 3.7752455345146637`*^9}, {3.7752550412120514`*^9, 
+   3.7752550573548317`*^9}, {3.775255333170273*^9, 3.775255349462983*^9}, {
+   3.775255385516371*^9, 3.775255412583908*^9}, {3.7752554543550634`*^9, 
+   3.7752554578220835`*^9}, {3.7752555280359545`*^9, 3.775255528853508*^9}, {
+   3.7752562834394536`*^9, 3.775256283731269*^9}, 3.775272223583912*^9},
+ CellLabel->
+  "In[403]:=",ExpressionUUID->"98920570-d6a5-4e66-8197-5ae2d70a6c9a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"1803.00404\"\>", ",", "\<\"1810.09619\"\>", 
+   ",", "\<\"1706.00633\"\>", ",", "\<\"1611.03814\"\>", 
+   ",", "\<\"1801.02613\"\>", ",", "\<\"1804.05810\"\>", 
+   ",", "\<\"1707.07397\"\>", ",", "\<\"1712.09665\"\>", 
+   ",", "\<\"1702.05983\"\>", ",", "\<\"1406.2661\"\>", 
+   ",", "\<\"1406.4729\"\>", ",", "\<\"1506.01497\"\>", 
+   ",", "\<\"1707.05474\"\>", ",", "\<\"1711.01991\"\>", 
+   ",", "\<\"1608.04644\"\>", ",", "\<\"1604.04326\"\>", 
+   ",", "\<\"1511.04599\"\>", ",", "\<\"1511.04508\"\>", 
+   ",", "\<\"1712.02976\"\>", ",", "\<\"1801.10578\"\>", 
+   ",", "\<\"1704.03453\"\>", ",", "\<\"1605.07277\"\>", 
+   ",", "\<\"1705.07204\"\>", ",", "\<\"1412.6572\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.775256284231001*^9, 3.775256437955168*^9, 
+  3.775272302524751*^9, 3.7752743852708473`*^9, 3.7752933183083615`*^9, 
+  3.775293546807453*^9, 3.775293811630063*^9, 3.7752940192073975`*^9, 
+  3.775337461627102*^9, 3.775338108932055*^9, 3.775338486383895*^9, 
+  3.7753400049130373`*^9, 3.775341503993083*^9, 3.775342520083214*^9, 
+  3.7753434422040405`*^9},
+ CellLabel->
+  "Out[406]=",ExpressionUUID->"1009ce80-9889-4ab4-819f-18d7f8be061b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"stPosiYear", "=", 
+   RowBox[{"First", "/@", 
+    RowBox[{"StringPosition", "[", 
+     RowBox[{"st", ",", "\"\<year = {\>\""}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pairsYear", "=", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"stPosiYear", "+", "0"}], ",", 
+      RowBox[{"stPosiYear", "+", "12"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"phasesYear", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringTake", "[", 
+      RowBox[{"st", ",", "#"}], "]"}], "&"}], "/@", "pairsYear"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"yearLists", "=", 
+  RowBox[{
+  "captureArXiv", "/@", "phasesYear"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7753375443558083`*^9, 3.775337570449891*^9}, {
+  3.775337623149766*^9, 3.7753376506060843`*^9}, {3.7753376931367564`*^9, 
+  3.7753376934735813`*^9}, {3.775337895911833*^9, 3.7753379041970997`*^9}, {
+  3.775337936668535*^9, 3.7753379368154497`*^9}, {3.7753380621557956`*^9, 
+  3.775338063466049*^9}, {3.775342015667573*^9, 3.775342034562771*^9}, {
+  3.775342498705414*^9, 3.775342513174165*^9}},
+ CellLabel->
+  "In[407]:=",ExpressionUUID->"608c7f44-4b31-4ba5-a52e-0223d1a13436"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"2018\"\>", ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2016\"\>", ",", "\<\"2018\"\>", ",", "\<\"2018\"\>", 
+   ",", "\<\"2019\"\>", ",", "\<\"2018\"\>", ",", "\<\"2018\"\>", 
+   ",", "\<\"2017\"\>", ",", "\<\"2014\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", ",", "\<\"2016\"\>", 
+   ",", "\<\"2017\"\>", ",", "\<\"2015\"\>", ",", "\<\"2016\"\>", 
+   ",", "\<\"2018\"\>", ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2016\"\>", ",", "\<\"2018\"\>", ",", "\<\"2014\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.7753379107093925`*^9, 3.7753379375610423`*^9}, 
+   3.7753380647173514`*^9, 3.775338109002016*^9, 3.7753384864488754`*^9, 
+   3.7753400050029635`*^9, 3.775341504077018*^9, 3.7753425178374763`*^9, 
+   3.7753434422730007`*^9},
+ CellLabel->
+  "Out[410]=",ExpressionUUID->"9b049ec0-e457-44fa-90fe-cc3eeabebe19"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"numPapers", "=", 
+   RowBox[{"Length", "@", "articlePosi"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vLookupAddress", "=", 
+    RowBox[{
+     RowBox[{"Count", "[", 
+      RowBox[{"articlePosi", ",", 
+       RowBox[{"u_", "/;", 
+        RowBox[{"u", "\[LessEqual]", "#"}]}]}], "]"}], "&"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"some", " ", "papers", " ", "may", " ", 
+    RowBox[{"don", "'"}], "t", " ", "have", " ", "arXiv", " ", "number", " ", 
+    "or", " ", 
+    RowBox[{"year", ".", " ", "Assign"}], " ", "value", " ", "\"\<Nil\>\"", 
+    " ", "for", " ", "the", " ", "missing", " ", "value"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"arXivIDListsAdj", "=", 
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{"\"\<Nil\>\"", ",", "numPapers"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yearListsAdj", "=", 
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{"\"\<Nil\>\"", ",", "numPapers"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"arXivIDListsAdj", "[", 
+    RowBox[{"[", 
+     RowBox[{"vLookupAddress", "/@", "stPosi"}], "]"}], "]"}], "=", 
+   "arXivIDLists"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"yearListsAdj", "[", 
+     RowBox[{"[", 
+      RowBox[{"vLookupAddress", "/@", "stPosiYear"}], "]"}], "]"}], "=", 
+    "yearLists"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"remove", " ", "papers", " ", "that", " ", 
+    RowBox[{"don", "'"}], "t", " ", "have", " ", "arXiv", " ", "number"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"arXivIDListsAdj", "=", 
+  RowBox[{"arXivIDListsAdj", "[", 
+   RowBox[{"[", 
+    RowBox[{"vLookupAddress", "/@", "stPosi"}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"yearListsAdj", "=", 
+  RowBox[{"yearListsAdj", "[", 
+   RowBox[{"[", 
+    RowBox[{"vLookupAddress", "/@", "stPosi"}], "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.775342527441985*^9, 3.7753425341691604`*^9}, {
+  3.775342748404667*^9, 3.7753428653118362`*^9}, {3.7753429043625126`*^9, 
+  3.7753429816093693`*^9}, {3.7753430730071197`*^9, 3.77534311903179*^9}, {
+  3.775343163922127*^9, 3.7753431653932858`*^9}, {3.775343295777768*^9, 
+  3.775343296620267*^9}, {3.775343345915106*^9, 3.77534342232041*^9}},
+ CellLabel->
+  "In[411]:=",ExpressionUUID->"dcc7ff9d-3b77-4ec0-9bee-0df740354810"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"1803.00404\"\>", ",", "\<\"1810.09619\"\>", 
+   ",", "\<\"1706.00633\"\>", ",", "\<\"1611.03814\"\>", 
+   ",", "\<\"1801.02613\"\>", ",", "\<\"1804.05810\"\>", 
+   ",", "\<\"1707.07397\"\>", ",", "\<\"1712.09665\"\>", 
+   ",", "\<\"1702.05983\"\>", ",", "\<\"1406.2661\"\>", 
+   ",", "\<\"1406.4729\"\>", ",", "\<\"1506.01497\"\>", 
+   ",", "\<\"1707.05474\"\>", ",", "\<\"1711.01991\"\>", 
+   ",", "\<\"1608.04644\"\>", ",", "\<\"1604.04326\"\>", 
+   ",", "\<\"1511.04599\"\>", ",", "\<\"1511.04508\"\>", 
+   ",", "\<\"1712.02976\"\>", ",", "\<\"1801.10578\"\>", 
+   ",", "\<\"1704.03453\"\>", ",", "\<\"1605.07277\"\>", 
+   ",", "\<\"1705.07204\"\>", ",", "\<\"1412.6572\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7753425226927023`*^9, 3.77534253505965*^9}, {
+   3.775342959893764*^9, 3.7753429825508137`*^9}, 3.7753431205819225`*^9, 
+   3.775343167542076*^9, 3.7753433952248993`*^9, 3.7753434423529572`*^9},
+ CellLabel->
+  "Out[417]=",ExpressionUUID->"98be6cc7-8f10-43a4-bf6e-50583f828721"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"2018\"\>", ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2016\"\>", ",", "\<\"2018\"\>", ",", "\<\"2019\"\>", 
+   ",", "\<\"2018\"\>", ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2014\"\>", ",", "\<\"Nil\"\>", ",", "\<\"Nil\"\>", 
+   ",", "\<\"2017\"\>", ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2016\"\>", ",", "\<\"2015\"\>", ",", "\<\"2016\"\>", 
+   ",", "\<\"2018\"\>", ",", "\<\"2018\"\>", ",", "\<\"2017\"\>", 
+   ",", "\<\"2016\"\>", ",", "\<\"2018\"\>", ",", "\<\"2014\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.7753425226927023`*^9, 3.77534253505965*^9}, {
+   3.775342959893764*^9, 3.7753429825508137`*^9}, 3.7753431205819225`*^9, 
+   3.775343167542076*^9, 3.7753433952248993`*^9, 3.775343442359971*^9},
+ CellLabel->
+  "Out[418]=",ExpressionUUID->"b84b69e1-b6d6-4206-bf53-8f0cdb59acd9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"nbDir", ",", "\"\<arXivIDandYearLists.mx\>\""}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"arXivIDListsAdj", ",", "yearListsAdj"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.77529333300794*^9, 3.775293360943971*^9}, {
+  3.7752935608574224`*^9, 3.775293578839161*^9}, {3.775293767387356*^9, 
+  3.7752937719127865`*^9}, {3.7753380846889143`*^9, 3.7753381035541334`*^9}, {
+  3.7753434329923267`*^9, 3.7753434379275055`*^9}},
+ CellLabel->
+  "In[419]:=",ExpressionUUID->"9b93930a-9937-42be-aaa3-378175d44e8b"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Lanston\\\\Documents\\\\GitHub\\\\Personal-\
+Private\\\\Personal Projects - temp\\\\arXiv tree\\\\arXivIDandYearLists.mx\"\
+\>"], "Output",
+ CellChangeTimes->{3.7752933630107884`*^9, 3.775293580578166*^9, 
+  3.7752938147502975`*^9, 3.7752940192733593`*^9, 3.7753374617190495`*^9, 
+  3.7753381090849676`*^9, 3.775338486514819*^9, 3.775340005091914*^9, 
+  3.7753415041040015`*^9, 3.7753434424579086`*^9},
+ CellLabel->
+  "Out[419]=",ExpressionUUID->"b8b34b51-4759-4382-93cf-9b6ce8497134"]
+}, Open  ]]
+},
+WindowSize->{1264, 637},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 229, 4, 28, "Input",ExpressionUUID->"474f3145-d71b-4b2c-94b8-a51e6d726d3f"],
+Cell[790, 26, 1671, 44, 181, "Input",ExpressionUUID->"e77a7509-4efa-420a-a6de-a768d454e9b4"],
+Cell[2464, 72, 799, 17, 48, "Input",ExpressionUUID->"0e3a35ef-6257-4f06-8888-dc68da39698a"],
+Cell[3266, 91, 823, 22, 86, "Input",ExpressionUUID->"60f54230-01b8-431e-a2c0-bf66f3d8e74a"],
+Cell[CellGroupData[{
+Cell[4114, 117, 1245, 31, 86, "Input",ExpressionUUID->"98920570-d6a5-4e66-8197-5ae2d70a6c9a"],
+Cell[5362, 150, 1200, 21, 52, "Output",ExpressionUUID->"1009ce80-9889-4ab4-819f-18d7f8be061b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6599, 176, 1264, 32, 105, "Input",ExpressionUUID->"608c7f44-4b31-4ba5-a52e-0223d1a13436"],
+Cell[7866, 210, 917, 16, 32, "Output",ExpressionUUID->"9b049ec0-e457-44fa-90fe-cc3eeabebe19"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8820, 231, 2488, 62, 238, "Input",ExpressionUUID->"dcc7ff9d-3b77-4ec0-9bee-0df740354810"],
+Cell[11311, 295, 1042, 18, 52, "Output",ExpressionUUID->"98be6cc7-8f10-43a4-bf6e-50583f828721"],
+Cell[12356, 315, 884, 15, 32, "Output",ExpressionUUID->"b84b69e1-b6d6-4206-bf53-8f0cdb59acd9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13277, 335, 605, 12, 28, "Input",ExpressionUUID->"9b93930a-9937-42be-aaa3-378175d44e8b"],
+Cell[13885, 349, 518, 8, 32, "Output",ExpressionUUID->"b8b34b51-4759-4382-93cf-9b6ce8497134"]
+}, Open  ]]
+}
+]
+*)
+
