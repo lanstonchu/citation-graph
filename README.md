@@ -1,4 +1,4 @@
-Project Title: **Automatic Generation of Academic Citation Graph**
+Project Title: **Automatic Generation of Academic Citation Graph (Wolfram Language version)**
 
 Also on: [WordPress][1], [Wolfram Community][6]
 
