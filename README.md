@@ -2,7 +2,7 @@ Project Title: **Automatic Generation of Academic Citation Graph (Wolfram Langua
 
 Also on: [WordPress][1], [Wolfram Community][6]
 
-Source Code and Data: [Wolfram Language version][2] and [Python version][7]
+Source Code and Data: [Original Wolfram Language version][2] and [Python version][7]
 
 In certain fields of academic studies (e.g. Deep Learning), academic papers are released in a much faster speed than people in the field read them (although it is certainly true in all fields). As researchers, we know that we want to know how the papers fit into the whole academic conversation, so it would be nice if we can automatically generate an academic paper citation graph, and immediately tell which one cites which.
 
